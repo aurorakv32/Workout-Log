@@ -1,0 +1,21 @@
+{
+  "name": "client",
+  "description": "workout log to learn persistence",
+  "main": "index.js",
+  "authors": [
+    "aurora wilson"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "bootstrap": "^3.3.7"
+  }
+}
