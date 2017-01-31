@@ -16,7 +16,7 @@ app.listen(3000, function(){
 });
 
 var Sequelize = require('sequelize');
-var sequelize = new Sequelize('workoutlog', 'postgres', 'IaNa116!', {
+var sequelize = new Sequelize('workoutlog', 'postgres', '4IaNa116!', {
 	host: 'localhost',
 	dialect: 'postgres'
 });
