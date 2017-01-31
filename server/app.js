@@ -39,8 +39,11 @@ var User = sequelize.define('user', {
 //creates the table in postgres
 //matches the model we defined
 //Doesn't drop the db
-// user.sync({force:true}); // drops the table completely(line 27-ish)
+ 
 User.sync();
+
+// *******DANGER: drops the table completely(line 27-ish)******
+// User.sync({ force: true });
 
 app.use(bodyParser.json());
 
