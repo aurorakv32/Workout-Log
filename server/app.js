@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var sequelize = require('./db.js');
+var User = sequelize.import('./models/user');
 
 // this allows the app to use the headers file in the middleware folder
 app.use(require('./middleware/headers'));
@@ -13,27 +15,6 @@ app.use('/api/test', function(req, res){
 // this shows that the 3000 port is open and active
 app.listen(3000, function(){
 	console.log('App is listening on 3000.')
-});
-
-var Sequelize = require('sequelize');
-var sequelize = new Sequelize('workoutlog', 'postgres', '4IaNa116!', {
-	host: 'localhost',
-	dialect: 'postgres'
-});
-
-sequelize.authenticate().then(
-	function() {
-		console.log('connected to workoutlog postgres db');
-	},
-	function(err){
-		console.log(err);
-	}
-);
-
-
-var User = sequelize.define('user', {
-	username: Sequelize.STRING,
-	passwordhash: Sequelize.STRING,
 });
 
 //creates the table in postgres
