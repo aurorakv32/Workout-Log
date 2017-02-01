@@ -53,6 +53,29 @@ $(function(){
 		}
 	}
 });
+	// bind tab change events
+	// bootstrap tab --> binding to a bootstrap event
+	$('a[data-toggle="tab"]').on('shown.bs.tab', function(e){
+		var target = $(e.target).attr("href"); //activated tab
+		if (target === "#log"){
+			WorkoutLog.log.setDefinitions();
+		}
+		if (target === "#history"){
+			WorkoutLog.log.setHistory();
+		}
+	});
+
+	// bind any key
+	$(document).on("keypress", function(e){
+		if(e.which === 13){ 		//13 is equivalent to the enter key
+			if($("#signup-modal").is(":visible")){
+		 		$("#signup").trigger("click");
+			}
+		if($("#login-modal").is(":visible")){
+			$("#login").trigger("click");
+		}
+	}
+});
 
 	var token = window.localStorage.getItem("sessionToken");
 	if(token) {
