@@ -3,7 +3,7 @@ $(function(){
 		definition: {
 			userDefinitions: [],
 
-			create: function(){
+			create: function() {
 				var def = {
 					desc: $("#def-description").val(),
 					type: $("#def-logtype").val()
@@ -17,13 +17,14 @@ $(function(){
 				});
 
 				define.done(function(data){
+
 					WorkoutLog.definition.userDefinitions.push(data.definition);
 				});
 			},
 
 			fetchAll: function(){
 				var fetchDefs = $.ajax({
-					type: "GET",
+					type: 'GET',
 					url: WorkoutLog.API_BASE + "definition",
 					headers: {
 						"authorization": window.localStorage.getItem("sessionToken")
@@ -32,9 +33,9 @@ $(function(){
 				.done(function(data){
 					WorkoutLog.definition.userDefinitions = data;
 				})
-					.fail(function(err){
-						console.log(err);
-					});
+				.fail(function(err){
+					console.log(err);
+				});
 			}
 		}
 	});
@@ -42,8 +43,10 @@ $(function(){
 	// bindings
 	$("#def-save").on("click", WorkoutLog.definition.create);
 
-	// fetch definitions if we already are authenticated and refreshed
-	if(window.localStorage.getItem("sesstionToken")){
+	//fetch definitions if we already are authenticated and refreshed
+	if(window.localStorage.getItem("sessionToken")){
 		WorkoutLog.definition.fetchAll();
 	}
 });
+
+
