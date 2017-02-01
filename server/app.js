@@ -13,18 +13,19 @@ var User = sequelize.import(__dirname + '/models/user');
 // User.sync();
 
 // *******DANGER: drops the table completely(line 27-ish)******
-User.sync({ force: true });
+// User.sync({ force: true });
+sequelize.sync();
 
 app.use(bodyParser.json());
 
 // this allows the app to use the headers file in the middleware folder
 app.use(require('./middleware/headers'));
 app.use(require('./middleware/validate-session'));
-
 app.use('/api/user', require('./routes/user'));
 
 //login route
 app.use('/api/login', require('./routes/session'));
+app.use('/api/definition', require('./routes/definition'));
 
 // this is a test function
 app.use('/api/test', function(req, res){
