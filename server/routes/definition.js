@@ -35,13 +35,13 @@ router.post('/', function(req, res){
 router.get('/', function(req, res){
 	//user variable
 	var userid = req.user.id;
+
 	Definition
 	//findAll by owner method
 	.findAll({
 		where: {owner: userid}
 	})
 	.then(
-
 		//success
 		function findAllSuccess(data){
 			//console.log(data);
