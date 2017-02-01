@@ -4,7 +4,7 @@ $(function(){
 		signup: function(){
 			//username & password variables
 			var username = $("#su_username").val();
-			var password = $("su_password").val();
+			var password = $("#su_password").val();
 			// user object
 			var user = {
 				user: {
@@ -12,11 +12,10 @@ $(function(){
 					password: password
 				}
 			};
-		}
 
 		//signup post
 		var signup = $.ajax({
-			type: 'POST',
+			type: "POST",
 			url: WorkoutLog.API_BASE + "user",
 			data: JSON.stringify(user),
 			contentType: "application/json"
@@ -31,16 +30,18 @@ $(function(){
 			$("#signup-modal").modal("hide");
 			$(".disabled").removeClass("disabled");
 			$("#loginout").text("Logout");
-				}).fail(function(){
-			$("#su_error").text("There was an issue with sign up").show();
+			}).fail(function(){
+				$("#su_error").text("There was an issue with sign up").show();
 		});
 		
 		// login method
 
 
 		//loginout method
-	});
+	};
 
+});
 	// bind events
 	$("#signup").on("click", WorkoutLog.signup);
+
 });
