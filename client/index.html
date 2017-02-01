@@ -35,6 +35,19 @@
 					<button class="btn btn-primary">Logout</button>
 				</div>
 			</div>
+<!-- definition -->
+		<div class="tab-pane" id="define">
+			<h2>Define</h2>
+			<label for="def-description">Description</label>
+			<textarea class="form-control" id="def-description" rows="3"></textarea>
+			<label for="def-logtype">Log work by</label>
+			<select class="form-control" id="def-logtype">
+				<option>Time</option>
+				<option>Weight</option>
+				<option>Reps</option>
+			</select>
+			<button id="def-save" class="btn btn-primary">Save</button>
+		</div>
 		</div>
 	</div>
 
@@ -95,9 +108,12 @@
 
 	<!-- link to the app.js file -->
 	<script src="./app.js"></script>
-
-	<script type="text/javascript" src="./app.js"></script> <!-- how is this different than above? -->
+	<!-- how is this different than above? -->
+	<script type="text/javascript" src="./app.js"></script> 
 	<script src="./user/auth.js"></script>
+
+	<!-- Links definitions to index -->
+	<script src="./workouts/define.js"></script>
 
 </body>
 </html>
