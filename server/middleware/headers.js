@@ -19,3 +19,7 @@ module.exports = function(req, res, next){
 // in our application.
 // next(); tells our server to either go to the next middleware or keep the request going till it
 // becomes handled.
+
+	next();
+};
+
