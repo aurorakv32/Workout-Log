@@ -38,7 +38,7 @@ $(function(){
 
 
 		//loginout method
-	};
+	}
 
 });
 	// bind events
