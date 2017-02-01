@@ -10,10 +10,10 @@ var User = sequelize.import(__dirname + '/models/user');
 //matches the model we defined
 //Doesn't drop the db
  
-User.sync();
+// User.sync();
 
 // *******DANGER: drops the table completely(line 27-ish)******
-// User.sync({ force: true });
+User.sync({ force: true });
 
 app.use(bodyParser.json());
 
