@@ -30,7 +30,7 @@ $(function(){
 					result: $("#log-result").val(),
 					def: $("#log-definition option:selected").text()
 				};
-					var postData = {log: itsLog};
+					var postData = { log: itsLog };
 					var logger = $.ajax({
 						type: 'POST',
 						url: WorkoutLog.API_BASE + "log",
@@ -39,7 +39,10 @@ $(function(){
 					});
 
 					logger.done(function(data){
-						WorkoutLog.log.workouts.push(data.log);
+						WorkoutLog.log.workouts.push(data);
+		      		$("#log-description").val("");
+					$("#log-result").val("");
+					$('a[href="#history"]').tab("show");						
 					});
 			},
 

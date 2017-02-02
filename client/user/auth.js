@@ -34,7 +34,7 @@ $(function(){
 			$(".disabled").removeClass("disabled");
 			$("#loginout").text("Logout");
 			console.log("Great job signing up!");
-			$('.nav-tabs a[href="#define"]').tab('show');
+			$('a[href="#define"]').tab("show");
 
 			$("#su_username").val("");
 			$("#su_password").val("");
@@ -78,7 +78,6 @@ $(function(){
 				$("#loginout").text("Logout");
 				$("li_username").val("");
 				$("li_password").val("");
-
 				$('a[href="#define"]').tab("show");
 			})
 
