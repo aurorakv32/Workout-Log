@@ -25,11 +25,23 @@ $(function(){
 		signup.done(function(data){
 			if(data.sessionToken){
 				WorkoutLog.setAuthHeader(data.sessionToken);
+				console.log("Thanks for being my friend and signing up successfully.")
+				console.log(data.sessionToken);
+				WorkoutLog.definition.fetchAll();
+				WorkoutLog.log.fetchAll();				
 			}
 			$("#signup-modal").modal("hide");
 			$(".disabled").removeClass("disabled");
 			$("#loginout").text("Logout");
-			}).fail(function(){
+			console.log("Great job signing up!");
+			$('a[href="#define"]').tab("show");
+
+			$("#su_username").val("");
+			$("#su_password").val("");
+
+			})
+
+			.fail(function(){
 				$("#su_error").text("There was an issue with sign up").show();
 		});
 	},
@@ -57,11 +69,19 @@ $(function(){
 			login.done(function(data){
 				if(data.sessionToken){
 					WorkoutLog.setAuthHeader(data.sessionToken);
+					WorkoutLog.definition.fetchAll();
+					WorkoutLog.log.fetchAll();
 				}
+
 				$("#login-modal").modal("hide");
 				$(".disabled").removeClass("disabled");
 				$("#loginout").text("Logout");
-			}).fail(function(){
+				$("li_username").val("");
+				$("li_password").val("");
+				$('a[href="#define"]').tab("show");
+			})
+
+			.fail(function(){
 				$("#li_error").text("There was an issue with sign up").show();
 			});
 		},
@@ -78,8 +98,8 @@ $(function(){
 
 
 	// bind events
-	$("#signup").on("click", WorkoutLog.signup);
 	$("#login").on("click", WorkoutLog.login);
+	$("#signup").on("click", WorkoutLog.signup);
 	$("#loginout").on("click", WorkoutLog.loginout);
 
 	if(window.localStorage.getItem("sessionToken")){

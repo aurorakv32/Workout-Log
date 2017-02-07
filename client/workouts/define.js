@@ -8,9 +8,9 @@ $(function(){
 					desc: $("#def-description").val(),
 					type: $("#def-logtype").val()
 				};
-				var postData = {definition: def};
+				var postData = { definition: def };
 				var define = $.ajax({
-					type: 'POST',
+					type: "POST",
 					url: WorkoutLog.API_BASE + "definition",
 					data: JSON.stringify(postData),
 					contentType: "application/json"
@@ -18,6 +18,9 @@ $(function(){
 
 				define.done(function(data){
 					WorkoutLog.definition.userDefinitions.push(data.definition);
+		      		$("#def-description").val("");
+					$("#def-logtype").val("");
+					$('a[href="#log"]').tab("show");					
 				});
 			},
 

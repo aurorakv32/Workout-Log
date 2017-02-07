@@ -3,8 +3,8 @@
 
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE-edge">
-	<meta name="viewport" content="width=device-width, initial-scale1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>Workout Log</title>
 
@@ -14,13 +14,14 @@
 
 <body>
 <!-- nav bar in list form -->
-	<ul class='nav nav-tabs'>
-		<li><a href="#home" id="loginout" class="disabled" data-toggle="tab">Login</a></li>
+	<ul class="nav nav-tabs">
+		<li><a href="#home" id="loginout" class="disabled" data-toggle="tab">Login</a></li> <!-- right place? -->
 		<li class="active"><a href="#home" data-toggle="tab">Home</a></li>
 		<li><a href="#define" data-toggle="tab">Define</a></li>
 		<li><a href="#log" data-toggle="tab">Log</a></li>
 		<li><a href="#history" data-toggle="tab">View History</a></li>
-		<li><a href="#" id="testAPI">Test API</a></li>
+		<li><a href="#goal" data-toggle="tab">Goal</a></li>
+		<a href="#update-log" data-toggle="tab" class="disabled" type="hidden"></a>
 	</ul>
 
 	<div class="container">
@@ -36,19 +37,58 @@
 				</div>
 			</div>
 <!-- definition -->
-		<div class="tab-pane" id="define">
-			<h2>Define</h2>
-			<label for="def-description">Description</label>
-			<textarea class="form-control" id="def-description" rows="3"></textarea>
-			<label for="def-logtype">Log work by</label>
-			<select class="form-control" id="def-logtype">
-				<option>Time</option>
-				<option>Weight</option>
-				<option>Reps</option>
-			</select>
-			<button id="def-save" class="btn btn-primary">Save</button>
+			<div class="tab-pane fade" id="define">
+				<h2>Define</h2>
+				<label for="def-description">Description</label>
+				<textarea class="form-control" id="def-description" rows="3"></textarea>
+				<label for="def-logtype">Log work by</label>
+				<select class="form-control" id="def-logtype">
+					<option>Time</option>
+					<option>Weight</option>
+					<option>Reps</option>
+				</select>
+				<button id="def-save" class="btn btn-primary">Save</button>
+			</div>
+<!-- Log -->
+			<div class="tab-pane fade" id="log">
+				<h2>Log your Workout!</h2>
+				<label>Results:</label>
+				<input type="text" class="form-control" id="log-result">
+				<label>Workout Select:</label>
+				<select class="form-control" id="log-definition"></select>
+				<label>Notes</label>
+				<textarea class="form-control" id="log-description" rows="3"></textarea>
+				<button id="log-save" class="btn btn-primary">Save</button>
+			</div>
+<!-- UPDATING A WORKOUT SECTION -->
+			<div class="tab-pane fade" id="update-log">
+				<h2>Log Update</h2>
+				<label>Result</label>
+				<input type="hidden" class="form-control" id="update-id" />
+				<input type="text" class="form-control" id="update-result" />
+				<label>Workout Select:</label>
+				<select class="form-control" id="update-definition"></select>
+				<label>Notes:</label>
+				<textarea class="form-control" id="update-description" rows="3"></textarea>
+				<br />
+				<button id="log-update" class="btn btn-primary">Save</button>
+			</div>
+<!-- History -->			
+			<div class="tab-pane fade" id="history">
+				<h2>History</h2>
+				<ul class="list-group" id="history-list"></ul>
+			</div>
+			<!-- goal tab -->
+			<div class="tab-pane fade" id="goal">
+				<h2>Goal</h2>
+				<label>Goal Title</label>
+				<input type="text" class="form-control" id="goal-result">
+				<label>Goal</label>
+				<textarea class="form-control" id="goal-description" rows="3"></textarea>
+				<button id="goal-save" class="btn btn-primary">Save</button>
+			</div>	
 		</div>
-		</div>
+
 	</div>
 
 <!-- login -->
@@ -100,6 +140,7 @@
 	</div>
 
 
+
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="./bower_components/jquery/dist/jquery.min.js"></script>
 
@@ -108,12 +149,17 @@
 
 	<!-- link to the app.js file -->
 	<script src="./app.js"></script>
-	<!-- how is this different than above? -->
-	<script type="text/javascript" src="./app.js"></script> 
+
 	<script src="./user/auth.js"></script>
 
 	<!-- Links definitions to index -->
 	<script src="./workouts/define.js"></script>
+
+	<!-- Links log to index -->
+	<script src="./workouts/log.js"></script>
+
+	<!-- Links to goal.js -->
+	<script src="./workouts/goal.js"></script>
 
 </body>
 </html>

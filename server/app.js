@@ -19,13 +19,15 @@ sequelize.sync();
 app.use(bodyParser.json());
 
 // this allows the app to use the headers file in the middleware folder
-app.use(require('./middleware/headers.js'));
+app.use(require('./middleware/headers'));
 app.use(require('./middleware/validate-session'));
 app.use('/api/user', require('./routes/user'));
 
 //login route
 app.use('/api/login', require('./routes/session'));
 app.use('/api/definition', require('./routes/definition'));
+app.use('/api/log', require('./routes/log'));
+app.use('/api/goal', require('./routes/goal'));
 
 // this is a test function
 app.use(require('./middleware/headers'));
