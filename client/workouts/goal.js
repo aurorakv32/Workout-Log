@@ -3,34 +3,34 @@ $(function(){
 		goal: {
 			workouts: [],
 
-			// setDefinitions: function(){
-			// 	var defs = WorkoutLog.definition.userDefinitions;
-			// 	var len = defs.length;
-			// 	// var opts;
-			// 	// 	for (var i = 0; i < len; i++) {
-			// 	// 		opts += "<option value='" + defs[i].id +"'>" + defs[i].description + "</option>";
-			// 		// }
-			// 	$("#goal-definition").children().remove();
-			// 	$("#goal-definition").append();				
-			// },
+			setDefinitions: function(){
+				var defs = WorkoutLog.definition.userDefinitions;
+				var len = defs.length;
+				var opts;
+					for (var i = 0; i < len; i++) {
+						opts += "<option value='" + defs[i].id +"'>" + defs[i].description + "</option>";
+					}
+				$("#goal-definition").children().remove();
+				$("#goal-definition").append(opts);				
+			},
 
-			// setHistory: function(){
-			// 	var history = WorkoutLog.goal.workouts;
-			// 	var len = history.length;
-			// 	var lis = "";
-			// 	for (var i = 0; i < len; i++){
-			// 		lis += "<li class='list-group-item'>" + 
-			// 		// history[i].id + " - " +
-			// 		history[i].def + " - " +
-			// 		history[i].result + " " +
-			// 		// pass the log.id into the button's id attribute // watch your quotes!
-			// 		"<div class='pull-right'>" + "<button id='" + history[i].id + "' class='update'><strong>U</strong></button>" +
-			// 		"<button id='" + history[i].id + "'class='remove'><strong>X</strong></button>" +
-			// 		"</div></li>";
-			// 	}
-			// 	$("#history-list").children().remove();
-			// 	$("#history-list").append(lis);
-			// },
+			setHistory: function(){
+				var history = WorkoutLog.goal.workouts;
+				var len = history.length;
+				var lis = "";
+				for (var i = 0; i < len; i++){
+					lis += "<li class='list-group-item'>" + 
+					// history[i].id + " - " +
+					history[i].def + " - " +
+					history[i].result + " " +
+					// pass the log.id into the button's id attribute // watch your quotes!
+					"<div class='pull-right'>" + "<button id='" + history[i].id + "' class='update'><strong>U</strong></button>" +
+					"<button id='" + history[i].id + "'class='remove'><strong>X</strong></button>" +
+					"</div></li>";
+				}
+				$("#history-list").children().remove();
+				$("#history-list").append(lis);
+			},
 
 			create: function(){
 				var itsLog = {
@@ -49,95 +49,95 @@ $(function(){
 						WorkoutLog.goal.workouts.push(data);
 		      		$("#goal-description").val("");
 					$("#goal-result").val("");
-					// $('a[href="#history"]').tab("show");						
+					$('a[href="#history"]').tab("show");						
 					});
 			},
 
-			// getWorkout: function() {
-			// 	var thisLog = {id: $(this).attr("id")};
-			// 	console.log(thisLog);
-			// 	logID = thisLog.id;
-			// 	var updateData = { log: thisLog };
-			// 	var getLog = $.ajax({
-			// 		type: "GET",
-			// 		url: WorkoutLog.API_BASE + "log/" + logID, 
-			// 		data: JSON.stringify(updateData),
-			// 		contentType: "application/json"
-			// 	});
+			getWorkout: function() {
+				var thisLog = {id: $(this).attr("id")};
+				console.log(thisLog);
+				logID = thisLog.id;
+				var updateData = { log: thisLog };
+				var getLog = $.ajax({
+					type: "GET",
+					url: WorkoutLog.API_BASE + "log/" + logID, 
+					data: JSON.stringify(updateData),
+					contentType: "application/json"
+				});
 
-			// 	getLog.done(function(data){
+				getLog.done(function(data){
 
-			// 		$('a[href="#update-log"]').tab("show");
-			// 		$("#update-result").val(data.result);
-			// 		$("#update-description").val(data.description);
-			// 		$("#update-id").val(data.id)
-			// 	});
-			// },
+					$('a[href="#update-log"]').tab("show");
+					$("#update-result").val(data.result);
+					$("#update-description").val(data.description);
+					$("#update-id").val(data.id)
+				});
+			},
 
-			// updateWorkout: function(){
-			// 	$("#update").text("Update");
-			// 	var updateLog = {
-			// 		id: $("#update-id").val(),
-			// 		desc: $("#update-description").val(),
-			// 		result: $("#update-result").val(),
-			// 		def: $("#update-definition option:selected").text()
-			// 	};
-			// 	for(var i = 0; i < WorkoutLog.log.workouts.length; i++){
-			// 		if(WorkoutLog.log.workouts[i].id == updateLog.id){
-			// 			WorkoutLog.log.workouts.splice(i, 1);
-			// 		}
-			// 	}
+			updateWorkout: function(){
+				$("#update").text("Update");
+				var updateLog = {
+					id: $("#update-id").val(),
+					desc: $("#update-description").val(),
+					result: $("#update-result").val(),
+					def: $("#update-definition option:selected").text()
+				};
+				for(var i = 0; i < WorkoutLog.goal.workouts.length; i++){
+					if(WorkoutLog.log.workouts[i].id == updateLog.id){
+						WorkoutLog.log.workouts.splice(i, 1);
+					}
+				}
 
-			// 	WorkoutLog.log.workouts.push(updateLog);
-			// 	var updateLogData = { log: updateLog };
-			// 	var updater = $.ajax({
-			// 		type: "PUT",
-			// 		url: WorkoutLog.API_BASE + "log",
-			// 		data: JSON.stringify(updateLogData),
-			// 		contentType: "application/json"
-			// 	});
+				WorkoutLog.log.workouts.push(updateLog);
+				var updateLogData = { goal: updateLog };
+				var updater = $.ajax({
+					type: "PUT",
+					url: WorkoutLog.API_BASE + "goal",
+					data: JSON.stringify(updateLogData),
+					contentType: "application/json"
+				});
 
-			// 	updater.done(function(data){
-			// 		console.log(data);
-			// 		$("#update-description").val("");
-			// 		$("#update-result").val("");
-			// 		$('a[href="#history"]').tab("show");
-			// 	});
-			// },
+				updater.done(function(data){
+					console.log(data);
+					$("#update-description").val("");
+					$("#update-result").val("");
+					$('a[href="#history"]').tab("show");
+				});
+			},
 
-			// delete: function(){
-			// 	var thisLog = {
-			// 		//"this" is the button on the li
-			// 		// .attr("id") targets the value of the id attribute of button
-			// 		id: $(this).attr("id")
-			// 	};
-			// 	var deleteData = { goal: thisLog };
-			// 	var deleteLog = $.ajax({
-			// 		type: "DELETE",
-			// 		url: WorkoutLog.API_BASE + "log",
-			// 		data: JSON.stringify(deleteData),
-			// 		contentType: "application/json"
-			// 	});
+			delete: function(){
+				var thisLog = {
+					//"this" is the button on the li
+					// .attr("id") targets the value of the id attribute of button
+					id: $(this).attr("id")
+				};
+				var deleteData = { goal: thisLog };
+				var deleteLog = $.ajax({
+					type: "DELETE",
+					url: WorkoutLog.API_BASE + "goal",
+					data: JSON.stringify(deleteData),
+					contentType: "application/json"
+				});
 
-			// 	//removes list item
-			// 	// reference button then grabs closest li
-			// 	$(this).closest("li").remove();
+				//removes list item
+				// reference button then grabs closest li
+				$(this).closest("li").remove();
 
-			// 	//deleted item out of workouts array
-			// 	for (var i = 0; i < WorkoutLog.log.workouts.length; i++) {
-			// 			if(WorkoutLog.log.workouts[i].id == thisLog.id){
-			// 				WorkoutLog.log.workouts.splice(i, 1);
-			// 			}
-			// 		}
-			// 	deleteLog.fail(function(){
-			// 		console.log("nope, you didn't delete it.");
-			// 	});
-			// },
+				//deleted item out of workouts array
+				for (var i = 0; i < WorkoutLog.log.workouts.length; i++) {
+						if(WorkoutLog.log.workouts[i].id == thisLog.id){
+							WorkoutLog.log.workouts.splice(i, 1);
+						}
+					}
+				deleteLog.fail(function(){
+					console.log("nope, you didn't delete it.");
+				});
+			},
 
 			fetchAll: function(){
 				var fetchDefs = $.ajax({
 					type: "GET",
-					url: WorkoutLog.API_BASE + "log",
+					url: WorkoutLog.API_BASE + "goal",
 					headers: {
 						"authorization": window.localStorage.getItem("sessionToken")
 					}
@@ -154,9 +154,9 @@ $(function(){
 
 	// bindings
 	$("#goal-save").on("click", WorkoutLog.goal.create);
-	// $("#history-list").delegate('.remove', 'click', WorkoutLog.log.delete);
-	// $("#log-update").on("click", WorkoutLog.log.updateWorkout);
-	// $("#history-list").delegate('.update', 'click', WorkoutLog.log.getWorkout);
+	$("#history-list").delegate('.remove', 'click', WorkoutLog.log.delete);
+	$("#goal-update").on("click", WorkoutLog.log.updateWorkout);
+	$("#history-list").delegate('.update', 'click', WorkoutLog.log.getWorkout);
 
 	// fetch definitions if we already are authenticated and refreshed
 	if(window.localStorage.getItem("sessionToken")){

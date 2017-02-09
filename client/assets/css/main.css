@@ -1,0 +1,38 @@
+body {
+	background-color: #f5f5f5 !important;
+}
+
+.tab-body {
+	background-color: #001B24;
+	padding: 20px;
+	color: white;
+	border-radius: 2px;
+	box-shadow: 2px 2px 20px #9A9898;
+}
+
+.nav > li > a:focus, .nav > li > a: hover {
+	color: #9A9898;
+	border-right: solid 5px #001B24;
+}
+
+.nav > li > a {
+	color: #333;
+	margin-left: 10px;
+}
+
+.aside-shadow {
+	box-shadow: 1px 15px 20px #c6c6c6;
+	height: 100vh;
+}
+
+.list-group-item {
+	color: #333;
+}
+
+.list-group-item > button {
+	color: red;
+}
+
+.table-extra {
+	padding: 10px;
+}

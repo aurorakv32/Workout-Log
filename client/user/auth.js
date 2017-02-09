@@ -35,7 +35,7 @@ $(function(){
 			$("#loginout").text("Logout");
 			console.log("Great job signing up!");
 			$('a[href="#define"]').tab("show");
-
+			$("#loginout").text("Logout, " + username);
 			$("#su_username").val("");
 			$("#su_password").val("");
 
@@ -79,6 +79,7 @@ $(function(){
 				$("li_username").val("");
 				$("li_password").val("");
 				$('a[href="#define"]').tab("show");
+				$("#loginout").text("Logout, " + username);
 			})
 
 			.fail(function(){
